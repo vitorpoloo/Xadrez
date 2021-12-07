@@ -34,18 +34,18 @@ public class Canvas extends JPanel {
 					if (first) {
 						if (t.lugares[x][y].isOcupado()
 								&& t.lugares[x][y].getPeca().getCor() == t.getJogadorAtual().getCor()) {
-							m.fromX = x;
-							m.fromY = y;
+							m.setFromX(x);
+							m.setFromY(y);
 							first = false;
 							draw(t);
 						}
 					} else {
 
-						m.toX = x;
-						m.toY = y;
+						m.setToX(x);
+						m.setToY(y);
 						first = true;
 
-						if (!(m.toX == m.fromX && m.toY == m.fromY)) {
+						if (!(m.getToX() == m.getFromX() && m.getToY() == m.getFromY())) {
 							ready = false;
 						}
 						draw(t);
@@ -89,7 +89,7 @@ public class Canvas extends JPanel {
 
 		if (this.isReady() && !this.first) {
 			g.setColor(Color.RED);
-			g.drawRect((this.m.fromX - 1) * 40, (this.m.fromY - 1) * 40, 39, 39);
+			g.drawRect((this.m.getFromX() - 1) * 40, (this.m.getFromY() - 1) * 40, 39, 39);
 		}
 
 	}

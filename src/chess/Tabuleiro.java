@@ -6,11 +6,11 @@ public class Tabuleiro {
 	private int vez;
 	private Jogador atual, p1, p0;
 
-	public Tabuleiro(Jogador p1, Jogador p0) {
-		this.p1 = p1;
-		this.p0 = p0;
-		this.vez = 1;
-		this.atual = p1;
+	public Tabuleiro(Jogador jogadorPreto, Jogador jogadorBranco) {
+		this.p1 = jogadorPreto;
+		this.p0 = jogadorBranco;
+		this.vez = 0;
+		this.atual = jogadorBranco;
 		this.xequeMate = false;
 		this.inicializarTabuleiro();
 	}
@@ -47,11 +47,11 @@ public class Tabuleiro {
 
 	public boolean nextMov() {
 		Move m = this.atual.gerarMov();
-		Lugar l = this.lugares[m.fromX][m.fromY];
+		Lugar l = this.lugares[m.getFromX()][m.getFromY()];
 		if (l.isOcupado()) {
 			Peca p = l.getPeca();
 			if (p.getCor() == this.vez) {
-				if (p.isMovValido(this, m.toX, m.toY)) {
+				if (p.isMovValido(this, m.getToX(), m.getToY())) {
 					this.moverPeca(m);
 
 					this.testaXeque();
@@ -66,17 +66,17 @@ public class Tabuleiro {
 	}
 
 	private void moverPeca(Move m) {
-		Lugar l1 = this.lugares[m.fromX][m.fromY];
+		Lugar l1 = this.lugares[m.getFromX()][m.getFromY()];
 		Peca p1 = l1.getPeca();
-		p1.setX(m.toX);
-		p1.setY(m.toY);
+		p1.setX(m.getToX());
+		p1.setY(m.getToY());
 		l1.setPeca(null);
 		l1.setOcupado(false);
-		if (this.lugares[m.toX][m.toY].isOcupado()) {
-			Peca p2 = this.lugares[m.toX][m.toY].getPeca();
+		if (this.lugares[m.getToX()][m.getToY()].isOcupado()) {
+			Peca p2 = this.lugares[m.getToX()][m.getToY()].getPeca();
 			p2.setCapturada(true);
 		}
-		this.lugares[m.toX][m.toY].setPeca(p1);
+		this.lugares[m.getToX()][m.getToY()].setPeca(p1);
 	}
 
 	public void trocarVez() {

@@ -1,27 +1,30 @@
 package chess;
 
 public class Lugar {
+
 	private Peca peca;
+
 	private boolean ocupado;
 
 	public Lugar() {
 		this.ocupado = false;
 	}
 
-	public void setPeca(Peca peca) {
-		this.peca = peca;
-		this.setOcupado(true);
-	}
-
-	public void setOcupado(boolean b) {
-		this.ocupado = b;
-	}
-
-	public boolean isOcupado() {
-		return this.ocupado;
-	}
-
 	public Peca getPeca() {
 		return peca;
 	}
+
+	public void setPeca(Peca peca) {
+		this.peca = peca;
+		this.setOcupado(Boolean.TRUE);
+	}
+
+	public boolean isOcupado() {
+		return ocupado;
+	}
+
+	public void setOcupado(boolean ocupado) {
+		this.ocupado = ocupado;
+	}
+
 }
