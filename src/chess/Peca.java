@@ -1,8 +1,17 @@
 package chess;
 
 public abstract class Peca {
-	private int cor; // 0 branca 1 preta
-	private int x, y;
+	
+	public static int COR_BRANCA = 0;
+	
+	public static int COR_PRETA = 1;
+	
+	private int cor;
+	
+	private int x;
+	
+	private int y;
+	
 	private boolean capturada;
 
 	public Peca(int cor, int x, int y) {

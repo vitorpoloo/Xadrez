@@ -28,8 +28,6 @@ public class Bispo extends Peca {
 
 		int x = this.getX(), y = this.getY();
 
-		Lugar l = null;
-
 		while (!(x == toX && y == toY)) {
 			switch (dir) {
 			case 1:

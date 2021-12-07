@@ -20,39 +20,38 @@ public class Jogador {
 		this.xeque = false;
 		this.inter = inter;
 
-		int c;
-		for (c = 1; c < 17; c++) {
-			this.pecas[c] = null;
+		for (int i = 1; i < 17; i++) {
+			this.pecas[i] = null;
 		}
 
-		c = 1;
-		if (this.cor == 1) {
-			this.pecas[c] = (new Torre(this.cor, c++, 1));
-			this.pecas[c] = (new Cavalo(this.cor, c++, 1));
-			this.pecas[c] = (new Bispo(this.cor, c++, 1));
-			this.rei = new Rei(this.cor, c, 1);
-			this.pecas[c++] = (this.rei);
-			this.pecas[c] = (new Rainha(this.cor, c++, 1));
-			this.pecas[c] = (new Bispo(this.cor, c++, 1));
-			this.pecas[c] = (new Cavalo(this.cor, c++, 1));
-			this.pecas[c] = (new Torre(this.cor, c++, 1));
+		int cont = 1;
+		if (this.cor == Peca.COR_PRETA) {
+			this.pecas[cont] = (new Torre(this.cor, cont++, 1));
+			this.pecas[cont] = (new Cavalo(this.cor, cont++, 1));
+			this.pecas[cont] = (new Bispo(this.cor, cont++, 1));
+			this.rei = new Rei(this.cor, cont, 1);
+			this.pecas[cont++] = (this.rei);
+			this.pecas[cont] = (new Rainha(this.cor, cont++, 1));
+			this.pecas[cont] = (new Bispo(this.cor, cont++, 1));
+			this.pecas[cont] = (new Cavalo(this.cor, cont++, 1));
+			this.pecas[cont] = (new Torre(this.cor, cont++, 1));
 
-			for (c = 1; c < 9; c++) {
-				this.pecas[c + 8] = new Peao(this.cor, c, 2, true);
+			for (int i = 1; i < 9; i++) {
+				this.pecas[i + 8] = new Peao(this.cor, i, 2, true);
 			}
 		} else {
-			this.pecas[c] = (new Torre(this.cor, c++, 8));
-			this.pecas[c] = (new Cavalo(this.cor, c++, 8));
-			this.pecas[c] = (new Bispo(this.cor, c++, 8));
-			this.rei = new Rei(this.cor, c, 8);
-			this.pecas[c++] = (this.rei);
-			this.pecas[c] = (new Rainha(this.cor, c++, 8));
-			this.pecas[c] = (new Bispo(this.cor, c++, 8));
-			this.pecas[c] = (new Cavalo(this.cor, c++, 8));
-			this.pecas[c] = (new Torre(this.cor, c++, 8));
+			this.pecas[cont] = (new Torre(this.cor, cont++, 8));
+			this.pecas[cont] = (new Cavalo(this.cor, cont++, 8));
+			this.pecas[cont] = (new Bispo(this.cor, cont++, 8));
+			this.rei = new Rei(this.cor, cont, 8);
+			this.pecas[cont++] = (this.rei);
+			this.pecas[cont] = (new Rainha(this.cor, cont++, 8));
+			this.pecas[cont] = (new Bispo(this.cor, cont++, 8));
+			this.pecas[cont] = (new Cavalo(this.cor, cont++, 8));
+			this.pecas[cont] = (new Torre(this.cor, cont++, 8));
 
-			for (c = 1; c < 9; c++) {
-				this.pecas[c + 8] = new Peao(this.cor, c, 7, false);
+			for (int i = 1; i < 9; i++) {
+				this.pecas[i + 8] = new Peao(this.cor, i, 7, false);
 			}
 		}
 	}
